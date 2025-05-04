@@ -1,0 +1,42 @@
+import random
+
+playerChoice = ['r', 'p', 's']
+print("Welcome to Rock, Paper & Scissors Game!\n")
+
+i = 0
+player_point = 0
+comp_point = 0
+
+while i < 10:
+    val = input("Your turn (r for rock, p for paper, s for scissors): ").strip().lower()
+    if val not in playerChoice:
+        print("Invalid choice. Try again.")
+        continue
+
+    print("Computer's turn...")
+    cval = random.choice(playerChoice)
+    print(f"Computer chose: {cval}")
+
+    if val == cval:
+        print("It's a tie!")
+    elif (val == 'r' and cval == 's') or (val == 'p' and cval == 'r') or (val == 's' and cval == 'p'):
+        player_point += 1
+        print("You win this round!")
+    else:
+        comp_point += 1
+        print("Computer wins this round!")
+
+    print(f"Score => You: {player_point} | Computer: {comp_point}\n")
+
+    i += 1
+    if player_point == 5 or comp_point == 5:
+        break
+
+# Final result
+print("Game Over!")
+if player_point > comp_point:
+    print("You are the winner!")
+elif comp_point > player_point:
+    print(" Computer wins the game!")
+else:
+    print(" It's a draw!")
